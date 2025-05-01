@@ -1,0 +1,39 @@
+<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="phone">Phone:</label>
+  <input type="text" id="phone" name="phone" maxlength="10" required>
+
+  <label for="pincode">Pincode:</label>
+  <input type="text" id="pincode" name="pincode" maxlength="6" required onblur="fetchCityState()">
+
+  <label for="city">City:</label>
+  <input type="text" id="city" name="city" readonly>
+
+  <label for="state">State:</label>
+  <input type="text" id="state" name="state" readonly>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+function fetchCityState() {
+  var pincode = document.getElementById('pincode').value;
+  if (pincode.length === 6) {
+    fetch('https://api.postalpincode.in/pincode/' + pincode)
+      .then(response => response.json())
+      .then(data => {
+        if (data[0].Status === "Success") {
+          var postOffice = data[0].PostOffice[0];
+          document.getElementById('city').value = postOffice.District;
+          document.getElementById('state').value = postOffice.State;
+        } else {
+          document.getElementById('city').value = '';
+          document.getElementById('state').value = '';
+          alert('Invalid Pincode');
+        }
+      });
+  }
+}
+</script>
