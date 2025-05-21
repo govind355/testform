@@ -1,0 +1,34 @@
+<!-- add-lead.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Lead</title>
+  <link href="assets/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <h1>Add New Lead</h1>
+    <nav>
+      <a href="index.html">Dashboard</a> |
+      <a href="leads.html">View Leads</a>
+    </nav>
+
+    <form id="leadForm">
+      <input type="text" id="name" placeholder="Name" required><br>
+      <input type="email" id="email" placeholder="Email" required><br>
+      <input type="text" id="phone" placeholder="Phone"><br>
+      <input type="text" id="source" placeholder="Source"><br>
+      <select id="status">
+        <option value="New">New</option>
+        <option value="Contacted">Contacted</option>
+        <option value="Qualified">Qualified</option>
+        <option value="Lost">Lost</option>
+      </select><br>
+      <textarea id="notes" placeholder="Notes"></textarea><br>
+      <button type="submit">Save Lead</button>
+    </form>
+  </div>
+  <script src="assets/js/add-lead.js"></script>
+</body>
+</html>
