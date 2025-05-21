@@ -13,7 +13,7 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
   };
 
   try {
-    const res = await fetch(https://script.google.com/macros/s/AKfycbxB-QsDcBai4Q883FwBI2aKMVP8hp9XEktQyyoyEx8QvB8mTb6cn5oG9At5Jet4eewyLQ/exec, {
+    const res = await fetch(API_URL, {
       method: "POST",
       body: JSON.stringify(lead),
       headers: {
@@ -22,14 +22,15 @@ document.getElementById("leadForm").addEventListener("submit", async (e) => {
     });
 
     const result = await res.json();
+
     if (result.result === "success") {
-      alert("Lead submitted!");
+      alert("Lead submitted successfully!");
       document.getElementById("leadForm").reset();
     } else {
-      alert("Failed to submit lead.");
+      alert("Submission failed.");
     }
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error("Error:", error);
     alert("Error submitting lead.");
   }
 });
