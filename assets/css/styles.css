@@ -19,3 +19,7 @@ input, select, textarea, button {
 nav a {
   margin-right: 10px;
 }
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+}
